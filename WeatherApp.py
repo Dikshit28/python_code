@@ -9,5 +9,5 @@ r = requests.get(url)
 
 s = BeautifulSoup(r.text, "html.parser")
 
-update = s.find("div",class_="BNeawe").text
+update = s.find("div", class_="BNeawe").text
 print(update)
