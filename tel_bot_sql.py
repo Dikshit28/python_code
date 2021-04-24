@@ -113,7 +113,7 @@ def attendance(update, context):
 def main():
     # Create updater and pass in Bot's auth key.
     updater = Updater(
-        token='1499954995:AAFGlqP8E3PYA_vCACIDcgVdJwgaeFlnABA', use_context=True)
+        token='1333205867:AAGbEaILdP0MH2dF9DNNCHV3RAh0koGMncg', use_context=True)
     # Get dispatcher to register handlers
     dispatcher = updater.dispatcher
     # answer commands
