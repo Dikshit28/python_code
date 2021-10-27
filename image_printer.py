@@ -1,21 +1,22 @@
-from PIL import Image, ImageDraw, ImageFont
-import os
+from PIL import Image, ImageFont, ImageDraw
+import pandas as pd
 
-image = Image.open("D:/python/bronze certi.jpeg")
-draw = ImageDraw.Draw(image)
-font = ImageFont.truetype("D:/python/times.ttf", 30)
-try:
-    os.mkdir('certificates')
-except:
-    pass
-# enter the co-ordinates
-# name
-(x, y) = (615, 505)
-color = 'rgb(0, 0, 0)'
-draw.text((x, y), 'Dikshit', fill=color, size=100, font=font)
-# marks
-(x, y) = (577, 583)
-color = 'rgb(0, 0, 0)'
-draw.text((x, y), '50', fill=color, size=20, font=font)
-filename = os.path.join('certificates', f"{'word'}_certificate.pdf")
-image.save(os.path.join(filename))
+FONT_FILE = ImageFont.truetype(r'./times.ttf', 70)
+FONT_COLOR = "#000000"
+WIDTH, HEIGHT = 1900,1350
+
+
+def make_cert(name):
+    """function to generate certificate"""
+    image_source = Image.open(r'./Hood club certificate_01.jpg')
+    draw = ImageDraw.Draw(image_source)
+    name_width, name_height = draw.textsize(name, font=FONT_FILE)
+    draw.text((WIDTH-name_width/2, HEIGHT-name_height/2), name, fill=FONT_COLOR, font=FONT_FILE)
+    image_source.save("./out/" + name+".jpg")
+    print('printing certificate of: '+name)
+
+
+files=pd.read_excel("./Gaming Gangsta - attendance.xlsx")
+names=files['Name']
+for x in names:
+    make_cert(x)

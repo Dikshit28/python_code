@@ -25,9 +25,9 @@ def login():
     username = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='username']")))
     password = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "input[name='password']")))
     username.clear()
-    username.send_keys("@dikshi.28")
+    username.send_keys("_reels_downloader_")
     password.clear()
-    password.send_keys("Sanju@39194")
+    password.send_keys("reelsdownloader")
     loginbutton = WebDriverWait(browser, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
     notnow = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
     notnow2 = WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
@@ -54,6 +54,7 @@ def download(links):
         video_urls.append(video_url)
     return video_urls,usernames
 
+#Run this every day at 12:00 AM
 login()
 links=audio_page()
 video_urls,usernames=download(links)
@@ -61,3 +62,4 @@ download.downloader(video_urls,usernames)
 combiner.combine("./reels-"+str(date.today())+"/",usernames,(date.today()))
 #Add deleter.py after uploading to youtube
 browser.quit()
+
