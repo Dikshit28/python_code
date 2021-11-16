@@ -1,6 +1,4 @@
 #Page replacment algorithm: Least Recently Used
-
-#method to find page faults using indexes
 def pageFaults(pages,capacity):
     s = []
     pageFaults = 0
